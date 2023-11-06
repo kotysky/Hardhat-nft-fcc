@@ -1,16 +1,16 @@
 const { network } = require("hardhat")
-const { developmentChains } = require("helper-hardhat-config")
+const { developmentChains } = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
-    const { deploy, lod } = deployments
-    const { deployer } = await getNamedAccounts
+    const { deploy, log } = deployments
+    const { deployer } = await getNamedAccounts()
 
     log("-------------------------------------------------------")
-    const args = []
+    const arguments = []
     const basicNft = await deploy("BasicNft", {
         from: deployer,
-        args: args,
+        args: arguments,
         log: true,
         waitConfirmations: network.config.blockConfitmations || 1,
     })
